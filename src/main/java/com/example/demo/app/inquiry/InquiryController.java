@@ -20,9 +20,8 @@ import com.example.demo.entity.Inquiry;
 import com.example.demo.service.InquiryNotFoundException;
 import com.example.demo.service.InquiryServiceImpl;
 
-/*
- * Add annotations here
- */
+@Controller
+@RequestMapping("/inquiry")
 public class InquiryController {
 	
 // 	private final InquiryServiceImpl inquiryService;

@@ -21,8 +21,6 @@ public class InquiryForm{
 		this.contents = contents;
 	}
 
-
-
 	@Size(min = 1, max = 20, message="Please input 20 characters or less")
     private String name;
     
@@ -56,6 +54,4 @@ public class InquiryForm{
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-
-
 }
