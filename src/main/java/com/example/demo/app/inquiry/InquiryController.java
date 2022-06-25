@@ -33,15 +33,12 @@ public class InquiryController {
 	
 	@GetMapping
 	public String index(Model model) {
-		
-		//hands-on
-		
 		return "inquiry/index";
 	}
 	
 	@GetMapping("/form")
-	public String form(/*Add parameters. */) {
-		
+	public String form(InquiryForm inquiryForm, Model model) {
+		model.addAttribute("title", "Inquiry Form");
 		return "inquiry/form";
 	}
 	
@@ -53,10 +50,14 @@ public class InquiryController {
 	
 	
 	@PostMapping("/confirm")
-	public String confirm(/*Add parameters. */) {
-
-		//hands-on
-		
+	public String confirm(@Validated InquiryForm inquiryForm,
+						  BindingResult result,
+						  Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("title", "Inquiry Form");
+			return "inquiry/form";
+		}
+		model.addAttribute("title", "Confirm Page");
 		return "inquiry/confirm";
 	}
 	
