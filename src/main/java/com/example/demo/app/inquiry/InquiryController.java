@@ -24,12 +24,12 @@ import com.example.demo.service.InquiryServiceImpl;
 @RequestMapping("/inquiry")
 public class InquiryController {
 	
-// 	private final InquiryServiceImpl inquiryService;
+ 	private final InquiryServiceImpl inquiryService;
 	
-	//Add an annotation here 
-// 	public InquiryController(InquiryServiceImpl inquiryService){
-// 		this.inquiryService = inquiryService;
-// 	}
+	@Autowired
+ 	public InquiryController(InquiryServiceImpl inquiryService){
+ 		this.inquiryService = inquiryService;
+ 	}
 	
 	@GetMapping
 	public String index(Model model) {
@@ -72,6 +72,14 @@ public class InquiryController {
 			model.addAttribute("title", "InquiryForm");
 			return "inquiry/form";
 		}
+
+		Inquiry inquiry = new Inquiry();
+		inquiry.setName(inquiryForm.getName());
+		inquiry.setEmail(inquiryForm.getEmail());
+		inquiry.setContents(inquiryForm.getContents());
+		inquiry.setCreated(LocalDateTime.now());
+
+		inquiryService.save(inquiry);
 		redirectAttributes.addFlashAttribute("complete", "Registered");
 		return "redirect:/inquiry/form";
 	}
