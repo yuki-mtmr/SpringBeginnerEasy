@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Survey;
 import com.example.demo.entity.Survey;
 
-@Repository
+//@Repository
 public class SurveyDaoImpl implements SurveyDao{
 	
 	private final JdbcTemplate jdbcTemplate;

@@ -34,9 +34,9 @@ public class SurveyController {
 	
 	@GetMapping
 	public String index(Model model) {
-		
-		//hands-on
-		
+		List<Survey> list = surveyService.getAll();
+		model.addAttribute("surveyList", list);
+		model.addAttribute("title", "Survey Index");
 		return "survey/index";
 	}
 	
@@ -76,6 +76,12 @@ public class SurveyController {
 			model.addAttribute("title", "SurveyForm");
 			return "survey/form";
 		}
+		Survey survey = new Survey();
+		survey.setAge(surveyForm.getAge());
+		survey.setSatisfaction(surveyForm.getSatisfaction());
+		survey.setComment(surveyForm.getComment());
+		survey.setCreated(LocalDateTime.now());
+		surveyService.save(survey);
 		redirectAttributes.addFlashAttribute("complete", "Registered");
 		return "redirect:/survey/form";
 	}
