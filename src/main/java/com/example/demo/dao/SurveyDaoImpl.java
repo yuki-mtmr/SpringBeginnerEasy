@@ -5,24 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.entity.Inquiry;
-import com.example.demo.repository.SurveyDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Survey;
-import com.example.demo.entity.Survey;
 
 @Repository
 public class SurveyDaoImpl implements SurveyDao {
 
-    private final JdbcTemplate jdbcTemplate;
-
     @Autowired
-    public SurveyDaoImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    JdbcTemplate jdbcTemplate;
 
     @Override
     public void insertSurvey(Survey survey) {
